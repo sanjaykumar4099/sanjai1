@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sanjay Kumar P R | Portfolio</title>
+<style>
+:root{
+    --bg:#07111f;
+    --card:#0d1b2e;
+    --text:#f5f7fb;
+    --muted:#a9b7c9;
+    --accent:#38bdf8;
+    --accent2:#8b5cf6;
+    --border:rgba(255,255,255,.09);
+}
+*{box-sizing:border-box;scroll-behavior:smooth}
+body{
+    margin:0;
+    font-family:"Segoe UI",Arial,sans-serif;
+    color:var(--text);
+    background:linear-gradient(135deg,#07111f,#0c1d32);
+    line-height:1.6;
+}
+nav{
+    position:sticky;top:0;z-index:10;
+    display:flex;justify-content:space-between;align-items:center;
+    padding:18px 7%;
+    background:rgba(7,17,31,.9);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--border);
+}
+.logo{font-size:1.3rem;font-weight:700}
+.logo span{color:var(--accent)}
+nav a{color:var(--muted);text-decoration:none;margin-left:22px}
+nav a:hover{color:var(--accent)}
+
+.hero{
+    min-height:78vh;
+    display:flex;
+    align-items:center;
+    padding:70px 8%;
+}
+.hero-content{max-width:850px}
+.intro{
+    color:var(--accent);
+    font-size:1.25rem;
+    margin-bottom:8px;
+}
+h1{
+    font-size:clamp(3rem,8vw,6rem);
+    line-height:1;
+    margin:0 0 20px;
+    letter-spacing:-3px;
+}
+h1 span{
+    background:linear-gradient(90deg,var(--accent),#b78cff);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+}
+.hero p{
+    max-width:680px;
+    color:var(--muted);
+    font-size:1.1rem;
+}
+.btn{
+    display:inline-block;
+    margin-top:20px;
+    padding:12px 22px;
+    border-radius:10px;
+    color:white;
+    text-decoration:none;
+    background:linear-gradient(135deg,var(--accent2),var(--accent));
+    font-weight:700;
+}
+section{padding:70px 8%}
+.title{font-size:2.2rem;margin-bottom:8px}
+.subtitle{color:var(--muted);margin-bottom:30px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:25px;
+}
+.card h3{margin-top:0}
+.card p,.card li,td{color:var(--muted)}
+.skills{display:flex;flex-wrap:wrap;gap:12px}
+.skill{
+    padding:10px 16px;
+    background:#10243a;
+    border:1px solid var(--border);
+    border-radius:10px;
+}
+table{width:100%;border-collapse:collapse}
+th,td{
+    padding:14px;
+    text-align:left;
+    border-bottom:1px solid var(--border);
+}
+th{color:white;background:#10243a}
+.contact{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+}
+.contact a{color:var(--accent);text-decoration:none}
+footer{
+    text-align:center;
+    padding:28px;
+    color:var(--muted);
+    border-top:1px solid var(--border);
+}
+
+.menu-toggle{
+    display:none;
+    border:0;
+    background:transparent;
+    color:white;
+    font-size:28px;
+    cursor:pointer;
+}
+
+.nav-links{
+    display:flex;
+    align-items:center;
+}
+
+@media(max-width:800px){
+    nav{
+        padding:16px 6%;
+    }
+
+    .menu-toggle{
+        display:block;
+    }
+
+    .nav-links{
+        display:none;
+        position:absolute;
+        top:100%;
+        left:0;
+        width:100%;
+        flex-direction:column;
+        align-items:stretch;
+        background:#09182a;
+        border-bottom:1px solid var(--border);
+        box-shadow:0 12px 25px rgba(0,0,0,.25);
+    }
+
+    .nav-links.active{
+        display:flex;
+    }
+
+    .nav-links a{
+        margin:0;
+        padding:15px 6%;
+        border-bottom:1px solid var(--border);
+    }
+
+    .hero{
+        min-height:75vh;
+        padding:60px 6%;
+    }
+
+    .hero-content{
+        width:100%;
+    }
+
+    h1{
+        font-size:clamp(2.8rem,13vw,4.5rem);
+        letter-spacing:-2px;
+    }
+
+    .hero p{
+        font-size:1rem;
+        line-height:1.7;
+    }
+
+    section{
+        padding:55px 6%;
+    }
+
+    .title{
+        font-size:1.9rem;
+    }
+
+    .card{
+        padding:20px;
+    }
+
+    table{
+        display:block;
+        overflow-x:auto;
+        white-space:nowrap;
+    }
+
+    .contact{
+        grid-template-columns:1fr;
+    }
+}
+
+@media(max-width:800px){
+    .grid,.contact{grid-template-columns:1fr}
+    h1{letter-spacing:-2px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+    <div class="logo">Sanjay <span>Kumar</span></div>
+
+    <button class="menu-toggle" aria-label="Open navigation" onclick="toggleMenu()">☰</button>
+
+    <div class="nav-links" id="navLinks">
+        <a href="#about" onclick="closeMenu()">About</a>
+        <a href="#skills" onclick="closeMenu()">Skills</a>
+        <a href="#education" onclick="closeMenu()">Education</a>
+        <a href="#experience" onclick="closeMenu()">Experience</a>
+        <a href="#contact" onclick="closeMenu()">Contact</a>
+    </div>
+</nav>
+
+<header class="hero" id="about">
+    <div class="hero-content">
+        <div class="intro">Hello, I am</div>
+        <h1>Sanjay Kumar <span>P R</span></h1>
+        <p>
+            Computer Science graduate with a strong foundation in Web Design, UI/UX,
+            Software Testing, Problem Solving, and Debugging, committed to continuous
+            learning and delivering effective technology solutions.
+        </p>
+        <a class="btn" href="#contact">Get In Touch</a>
+    </div>
+</header>
+
+
+
+
+
+
+
+
+
+<section id="skills">
+    <h2 class="title">Skills</h2>
+    <p class="subtitle">My technical skills and areas of interest.</p>
+    <div class="skills">
+        <span class="skill">C</span>
+        <span class="skill">Python</span>
+        <span class="skill">HTML</span>
+        <span class="skill">MySQL</span>
+        <span class="skill">UI/UX</span>
+        <span class="skill">Software Testing</span>
+        <span class="skill">Selenium</span>
+        <span class="skill">Debugging</span>
+    </div>
+</section>
+
+<section id="education">
+    <h2 class="title">Education</h2>
+    <p class="subtitle">Academic qualifications.</p>
+    <div class="card">
+        <table>
+            <tr><th>Qualification</th><th>Institution</th><th>Year</th><th>Result</th></tr>
+            <tr><td>B.Sc Computer Science</td><td>Karpagam Academy of Higher Education, Coimbatore</td><td>2025</td><td>7.3*</td></tr>
+            <tr><td>HSC</td><td>SKV Vidhyaasharam Senior Secondary School, CBSE</td><td>2022</td><td>63.2%</td></tr>
+            <tr><td>SSLC</td><td>SKV Vidhyaasharam Senior Secondary School, CBSE</td><td>2020</td><td>65.8%</td></tr>
+        </table>
+    </div>
+</section>
+
+<section id="experience">
+    <h2 class="title">Experience & Training</h2>
+    <p class="subtitle">Academic and practical experience.</p>
+    <div class="grid">
+        <div class="card">
+            <h3>UI/UX & Software Testing Intern</h3>
+            <p><strong>Nano Nino Solutions Pvt. Ltd.</strong></p>
+            <p>Completed a 54-day internship from August to October 2023 and gained practical knowledge of software testing and UI/UX tools.</p>
+        </div>
+        <div class="card">
+            <h3>Selenium Training</h3>
+            <p>Completed 10-day Selenium training at Karpagam Academy of Higher Education and received certification.</p>
+        </div>
+        <div class="card">
+            <h3>Python Webinar</h3>
+            <p>Attended a Python webinar at Karpagam Academy of Higher Education.</p>
+        </div>
+        <div class="card">
+            <h3>Areas of Interest</h3>
+            <p>Web Designing, Problem Solving, Volunteering and Debugging.</p>
+        </div>
+    </div>
+</section>
+
+<section id="contact">
+    <h2 class="title">Contact Me</h2>
+    <p class="subtitle">Let's connect for professional opportunities.</p>
+    <div class="contact">
+        <div class="card"><h3>Phone</h3><a href="tel:7010964989">7010964989</a></div>
+        <div class="card"><h3>Email</h3><a href="mailto:sanjaykumarramesh123@gmail.com">sanjaykumarramesh123@gmail.com</a></div>
+        <div class="card"><h3>LinkedIn</h3><a href="https://www.linkedin.com/in/.sanjay-kumar-a69380269" target="_blank">View Profile</a></div>
+    </div>
+</section>
+
+<footer>© 2026 Sanjay Kumar P R • Portfolio</footer>
+
+
+<script>
+function toggleMenu(){
+    document.getElementById("navLinks").classList.toggle("active");
+}
+function closeMenu(){
+    document.getElementById("navLinks").classList.remove("active");
+}
+</script>
+</body>
+</html>
